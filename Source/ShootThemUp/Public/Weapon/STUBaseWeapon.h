@@ -16,7 +16,8 @@ class SHOOTTHEMUP_API ASTUBaseWeapon : public AActor
 public:	
 	ASTUBaseWeapon();
 
-    virtual void Fire();
+    virtual void StartFire();
+    virtual void StopFire();
 
 protected:
 
@@ -34,14 +35,13 @@ protected:
     
 	virtual void BeginPlay() override;
 
-    void MakeShot();
+    virtual void MakeShot();
+    virtual bool GetTraceData(FVector&, FVector&) const;
 
     APlayerController* GetPlayerController() const;
     bool GetPlayerViewPoint(FVector&, FRotator&) const;
     FVector GetMuzzleWorldLocation() const;
-    bool GetTraceData(FVector&, FVector&) const;
     void MakeHit(FHitResult&, FVector&, FVector&);
 
     void MakeDamage(const FHitResult&);
-
 };
