@@ -24,7 +24,8 @@ public:
     void NextWeapon();
     void Reload();
 
-    bool GetWeaponUIData(FWeaponUIData&) const;
+    bool GetCurrentWeaponUIData(FWeaponUIData&) const;
+    bool GetCurrentWeaponAmmoData(FAmmoData&) const;
 
 protected:
 
@@ -50,7 +51,6 @@ private:
 
     UPROPERTY()
     ASTUBaseWeapon* CurrentWeapon = nullptr;
-
 
     UPROPERTY()
     TArray<ASTUBaseWeapon*> Weapons;
