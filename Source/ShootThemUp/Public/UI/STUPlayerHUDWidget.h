@@ -7,6 +7,7 @@
 #include "STUCoreTypes.h"
 #include "STUPlayerHUDWidget.generated.h"
 
+class USTUHealthComponent;
 class USTUWeaponComponent;
 /**
  * 
@@ -25,6 +26,13 @@ public:
     UFUNCTION(BlueprintCallable, Category="UI")
     bool GetCurrentAmmoData(FAmmoData& AmmoData) const;
 
+    UFUNCTION(BlueprintCallable, Category="UI")
+    bool IsPlayerAlive() const;
+
+    UFUNCTION(BlueprintCallable, Category="UI")
+    bool IsPlayerSpectating() const;
+    
 private:
     USTUWeaponComponent* GetWeaponComponent() const;
+    USTUHealthComponent* GetHealthComponent() const;
 };
