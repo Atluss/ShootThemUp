@@ -30,6 +30,8 @@ public:
 
     FAmmoData GetCurrentAmmoData() const { return CurrentAmmo; };
 
+    bool TryToAddAmmo(int32 ClipsAmount);
+
 protected:
 
     UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category="Components")
@@ -60,6 +62,8 @@ protected:
     void DecreaseAmmo();
     bool IsAmmoEmpty() const;
     bool IsClipEmpty() const;
+    bool IsAmmoFull() const;
+    
     void LogAmmo();
 
 private:
