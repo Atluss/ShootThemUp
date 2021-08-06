@@ -30,6 +30,8 @@ public:
 
     bool TryToAddAmmo(TSubclassOf<ASTUBaseWeapon>, int32);
 
+    bool NeedAmmo(TSubclassOf<ASTUBaseWeapon>) const;
+
 protected:
 
     UPROPERTY(EditDefaultsOnly, Category="Weapon")
