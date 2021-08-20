@@ -8,7 +8,7 @@
 #include "GameFramework/Controller.h"
 #include "TimerManager.h"
 #include "STUGameModeBase.h"
-#include "Camera/CameraShake.h"
+#include "Camera/CameraShakeBase.h"
 
 DEFINE_LOG_CATEGORY_STATIC(LogHealthController, All, All);
 
