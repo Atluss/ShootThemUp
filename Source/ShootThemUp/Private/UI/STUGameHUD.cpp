@@ -3,7 +3,7 @@
 
 #include "UI/STUGameHUD.h"
 #include "Engine/Canvas.h"
-#include "Blueprint/UserWidget.h"
+#include "UI/STUBaseWidget.h"
 #include "STUGameModeBase.h"
 
 DEFINE_LOG_CATEGORY_STATIC(LogSTUGameHUB, All, All);
@@ -19,9 +19,9 @@ void ASTUGameHUD::BeginPlay()
     Super::BeginPlay();
 
     // заполняем массив виджетов и добавляем во вьюпорт
-    GameWidgets.Add(ESTUMatchState::InProgress, CreateWidget<UUserWidget>(GetWorld(), PlayerHUDWidgetClass));
-    GameWidgets.Add(ESTUMatchState::Pause, CreateWidget<UUserWidget>(GetWorld(), PauseWidgetClass));
-    GameWidgets.Add(ESTUMatchState::GameOver, CreateWidget<UUserWidget>(GetWorld(), GameOverWidgetClass));
+    GameWidgets.Add(ESTUMatchState::InProgress, CreateWidget<USTUBaseWidget>(GetWorld(), PlayerHUDWidgetClass));
+    GameWidgets.Add(ESTUMatchState::Pause, CreateWidget<USTUBaseWidget>(GetWorld(), PauseWidgetClass));
+    GameWidgets.Add(ESTUMatchState::GameOver, CreateWidget<USTUBaseWidget>(GetWorld(), GameOverWidgetClass));
 
     for (auto GameWidgetPair : GameWidgets)
     {
@@ -69,6 +69,7 @@ void ASTUGameHUD::OnMatchStateChanged(ESTUMatchState State)
     if (CurrentWidget)
     {
         CurrentWidget->SetVisibility(ESlateVisibility::Visible);
+        CurrentWidget->Show();
     }
     
     UE_LOG(LogSTUGameHUB, Display, TEXT("Match state changed: %s"), *UEnum::GetValueAsString(State));
