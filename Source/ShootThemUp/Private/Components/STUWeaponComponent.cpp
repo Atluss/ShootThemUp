@@ -81,6 +81,7 @@ void USTUWeaponComponent::EquipWeapon(int32 IndexWeapon)
     if (CurrentWeapon)
     {
         CurrentWeapon->StopFire();
+        CurrentWeapon->Zoom(false);
         AttachWeaponToSocket(CurrentWeapon, Character->GetMesh(), WeaponArmorySocketName);
     }
     
@@ -226,6 +227,14 @@ bool USTUWeaponComponent::NeedAmmo(TSubclassOf<ASTUBaseWeapon> WeaponType) const
     }
 
     return false;
+}
+
+void USTUWeaponComponent::Zoom(bool Enable)
+{
+    if (CurrentWeapon)
+    {
+        CurrentWeapon->Zoom(Enable);
+    }
 }
 
 bool USTUWeaponComponent::CanReload() const

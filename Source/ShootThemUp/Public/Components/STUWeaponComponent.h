@@ -32,6 +32,8 @@ public:
 
     bool NeedAmmo(TSubclassOf<ASTUBaseWeapon>) const;
 
+    void Zoom(bool Enable);
+
 protected:
 
     UPROPERTY(EditDefaultsOnly, Category="Weapon")
