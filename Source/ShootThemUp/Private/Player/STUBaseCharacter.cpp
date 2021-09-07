@@ -101,12 +101,10 @@ void ASTUBaseCharacter::OnHealthChanged(float Health, float HealthDelta)
 void ASTUBaseCharacter::OnGroundLanded(const FHitResult& Hit)
 {
     const auto FallVelocityZ = -GetVelocity().Z;
-    UE_LOG(BaseCharacterLog, Display, TEXT("On landed: %f"), FallVelocityZ);
-
     if (FallVelocityZ < LandedDamageVelocity.X) return;
 
     const auto FinalDamage = FMath::GetMappedRangeValueClamped(LandedDamageVelocity, LandedDamage, FallVelocityZ);
 
     UE_LOG(BaseCharacterLog, Display, TEXT("Final damage: %f"), FallVelocityZ);
-    TakeDamage(FinalDamage, FDamageEvent{}, nullptr, nullptr);
+    TakeDamage(FinalDamage, FPointDamageEvent{}, nullptr, nullptr);
 }
