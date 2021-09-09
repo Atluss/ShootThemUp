@@ -33,6 +33,7 @@ void ASTUBaseCharacter::BeginPlay()
 
     check(HealthComponent);
     check(GetCharacterMovement());
+    check(GetCapsuleComponent());
     check(GetMesh());
 
     OnHealthChanged(HealthComponent->GetHealth(), 0.0f);
@@ -46,6 +47,20 @@ void ASTUBaseCharacter::BeginPlay()
 void ASTUBaseCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+}
+
+void ASTUBaseCharacter::TurnOff()
+{
+    WeaponComponent->StopFire();
+    WeaponComponent->Zoom(false);
+    Super::TurnOff();
+}
+
+void ASTUBaseCharacter::Reset()
+{
+    WeaponComponent->StopFire();
+    WeaponComponent->Zoom(false);
+    Super::Reset();
 }
 
 bool ASTUBaseCharacter::IsRunning() const
